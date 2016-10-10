@@ -13,6 +13,7 @@ RUN find /etc/systemd/system \
          -exec rm \{} \;
 
 RUN systemctl set-default multi-user.target
+RUN apt-get update
 RUN apt-get install -y vim
 
 VOLUME ["/sys/fs/cgroup"]
