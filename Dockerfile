@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 ENV LANG en_US.UTF-8
 
-RUN locale-gen en_US.UTF-8
+RUN locale-gen en_US en_US.UTF-8
+RUN dpkg-reconfigure locales
 
 RUN find /etc/systemd/system \
          /lib/systemd/system \
