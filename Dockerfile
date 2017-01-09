@@ -18,7 +18,7 @@ RUN find /etc/systemd/system \
 
 RUN systemctl set-default multi-user.target
 RUN apt-get update
-RUN apt-get install -y vim
+RUN apt-get install -y git wget vim apt-transport-https
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
