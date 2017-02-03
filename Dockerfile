@@ -18,7 +18,7 @@ RUN find /etc/systemd/system \
 
 RUN systemctl set-default multi-user.target
 RUN apt-get update
-RUN apt-get install -y git wget vim apt-transport-https net-tools
+RUN apt-get install -y git wget vim apt-transport-https net-tools jq
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
