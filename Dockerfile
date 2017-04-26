@@ -6,9 +6,6 @@ ENV TERM xterm
 ENV LANG en_US.UTF-8
 ENV PATH "${PATH}:/opt/puppetlabs/bin"
 
-RUN locale-gen en_US en_US.UTF-8
-RUN dpkg-reconfigure locales
-
 RUN find /etc/systemd/system \
          /lib/systemd/system \
          -path '*.wants/*' \
@@ -19,7 +16,10 @@ RUN find /etc/systemd/system \
 
 RUN systemctl set-default multi-user.target
 RUN apt-get update
-RUN apt-get install -y git wget vim apt-transport-https net-tools jq
+RUN apt-get install -y git wget vim apt-transport-https net-tools jq locales
+
+RUN locale-gen en_US en_US.UTF-8
+RUN dpkg-reconfigure locales
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
