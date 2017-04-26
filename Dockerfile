@@ -4,6 +4,7 @@ ENV container docker
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 ENV LANG en_US.UTF-8
+ENV PATH "${PATH}:/opt/puppetlabs/bin"
 
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
