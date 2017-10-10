@@ -16,7 +16,7 @@ RUN find /etc/systemd/system \
 
 RUN systemctl set-default multi-user.target
 RUN apt-get update
-RUN apt-get install -y git wget vim apt-transport-https net-tools jq locales
+RUN apt-get install -y git wget vim apt-transport-https net-tools jq locales sudo
 
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
