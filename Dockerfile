@@ -1,10 +1,17 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV container docker
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 ENV LANG en_US.UTF-8
 ENV PATH "${PATH}:/opt/puppetlabs/bin"
+
+RUN apt-get update && \
+    apt-get install -y systemd iputils-ping net-tools dnsutils openssh-server \
+    build-essential apt-transport-https sudo locales unzip jq git wget vim
+
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN find /etc/systemd/system \
          /lib/systemd/system \
@@ -15,10 +22,6 @@ RUN find /etc/systemd/system \
          -exec rm \{} \;
 
 RUN systemctl set-default multi-user.target
-RUN apt-get update
-RUN apt-get install -y git wget vim iputils-ping net-tools jq locales sudo
-RUN apt-get install -y build-essential apt-transport-https dnsutils unzip
-
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
 
