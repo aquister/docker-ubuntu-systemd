@@ -8,7 +8,7 @@ ENV PATH "${PATH}:/opt/puppetlabs/bin"
 
 RUN apt-get update && \
     apt-get install -y systemd iputils-ping net-tools dnsutils openssh-server \
-    build-essential apt-transport-https sudo locales unzip jq git wget vim
+    build-essential dbus apt-transport-https sudo locales unzip jq git wget vim
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
@@ -24,6 +24,8 @@ RUN find /etc/systemd/system \
 RUN systemctl set-default multi-user.target
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
+
+RUN /bin/systemctl enable ssh.service
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
