@@ -6,9 +6,10 @@ ENV TERM xterm
 ENV LANG en_US.UTF-8
 ENV PATH "${PATH}:/opt/puppetlabs/bin"
 
-RUN apt-get update && \
-    apt-get install -y systemd iputils-ping net-tools dnsutils openssh-server \
-    build-essential dbus apt-transport-https sudo locales unzip jq git wget vim
+RUN apt-get update
+RUN apt-get apt-get install -y \
+  systemd iputils-ping net-tools dnsutils openssh-server apparmor \
+  build-essential dbus apt-transport-https sudo locales unzip jq git wget vim
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
