@@ -16,8 +16,9 @@ RUN find /etc/systemd/system \
 
 RUN systemctl set-default multi-user.target
 RUN apt-get update
-RUN apt-get install -y git wget vim iputils-ping net-tools jq locales sudo
-RUN apt-get install -y build-essential apt-transport-https dnsutils unzip
+RUN apt-get install -y \
+  git wget vim iputils-ping net-tools jq locales sudo \
+  build-essential apt-transport-https dnsutils unzip apparmor
 
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
