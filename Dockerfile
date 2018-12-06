@@ -18,7 +18,7 @@ RUN systemctl set-default multi-user.target
 RUN apt-get update
 RUN apt-get install -y \
   git wget vim iputils-ping net-tools jq locales sudo \
-  build-essential apt-transport-https dnsutils unzip
+  build-essential apt-transport-https dnsutils unzip lvm2
 
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
