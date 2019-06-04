@@ -8,7 +8,7 @@ ENV PATH "${PATH}:/opt/puppetlabs/bin"
 
 RUN apt-get update
 RUN apt-get install -y \
-  systemd iputils-ping net-tools dnsutils openssh-server build-essential \
+  systemd iputils-ping net-tools dnsutils openssh-server build-essential cron \
   dbus apt-transport-https sudo locales unzip jq git wget vim iproute2 lvm2
 
 RUN apt-get clean
